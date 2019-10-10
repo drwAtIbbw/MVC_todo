@@ -40,6 +40,7 @@
             {
                 $form[$key] = $this->secure_input($value);
             }
+            return $form;
         }
 
     }
