@@ -19,8 +19,10 @@ class tasksController extends Controller
             require(ROOT . 'Models/Task.php');
 
             $task= new Task();
-
-            if ($task->create($_POST["title"], $_POST["description"]))
+            /*secure Data example*/
+            $secure_inputs = $this->secure_form($_POST);
+            if ($task->create($secure_inputs["title"], $secure_inputs["description"]))
+            //if ($task->create($_POST["title"], $_POST["description"]))
             {
                 header("Location: " . WEBROOT . "tasks/index");
             }
