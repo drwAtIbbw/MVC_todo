@@ -7,7 +7,7 @@ class tasksController extends Controller
 
         $tasks = new Task();
 
-        $d['tasks'] = $tasks->showAllTasks();
+        $d['tasks'] = $tasks->showAll(); //invoke parent basic function
         $this->set($d);
         $this->render("index");
     }
