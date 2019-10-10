@@ -1,6 +1,9 @@
 <?php
 class Task extends Model
 {
+    protected $tablename = 'tasks';
+    protected $colnames = array(); //insert constructor method to read colnames and constraints from dbms
+    
     public function create($title, $description)
     {
         $sql = "INSERT INTO tasks (title, description, created_at, updated_at) VALUES (:title, :description, :created_at, :updated_at)";
@@ -23,15 +26,8 @@ class Task extends Model
         $req->execute();
         return $req->fetch();
     }
-
-    public function showAllTasks()
-    {
-        $sql = "SELECT * FROM tasks";
-        $req = Database::getBdd()->prepare($sql);
-        $req->execute();
-        return $req->fetchAll();
-    }
-
+    //parent publicfunction showAll replaces showAllTasks
+    
     public function edit($id, $title, $description)
     {
         $sql = "UPDATE tasks SET title = :title, description = :description , updated_at = :updated_at WHERE id = :id";
