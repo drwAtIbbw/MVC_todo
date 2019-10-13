@@ -51,7 +51,7 @@ function index()
         if($this->isauthenticated($this->Controller->request->action) && $this->isauthorized($this->Controller->request->action)) {
         $schueler= new Schueler();
         $d["schueler"] = $schueler->show($id);
-        if (isset($_POST))
+        if (!empty($_POST))
         {
 		$secured_params = $this->secure_form($_POST); 
 		        
