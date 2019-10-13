@@ -57,7 +57,7 @@ function index()
         if($this->isauthenticated($this->Controller->request->action) && $this->isauthorized($this->Controller->request->action)) {
         $user= new User();
         $d["user"] = $user->show($id);
-        if (isset($_POST["vorname"]))
+        if (!empty($_POST))
         {
 		$secured_params = $this->secure_form($_POST); 
 		print_r($secured_params); echo('hallo');          
